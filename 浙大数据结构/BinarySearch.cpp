@@ -1,26 +1,53 @@
 #include <stdio.h>
-//修改一下 
+#include <stdlib.h>
 
-int BinarySearch(int list[],int N,int X,int l,int r)
-{
- int m=(l+r)/2;
- if(list[m]==X)
- return m;
- else if(list[m]>X)
- {
- 	r=m;
- 	BinarySearch(list,N,X,l,r);
- }
- else
- {
- 	l=m;
- 	BinarySearch(list,N,X,l,r);
- }	 
-}
+#define MAXSIZE 10
+#define NotFound 0
+typedef int ElementType;
+
+typedef int Position;
+typedef struct LNode *List;
+struct LNode {
+    ElementType Data[MAXSIZE];
+    Position Last; /* 保存线性表中最后一个元素的位置 */
+};
+
+List ReadInput(); /* 裁判实现，细节不表。元素从下标1开始存储 */
+Position BinarySearch( List L, ElementType X );
+
 int main()
 {
-	int a[]={1,2,3,4,5,7,9,11};
-	int p;
-	p=BinarySearch(a,8,7,0,7);
-	printf("%d",p);
+    List L;
+    ElementType X;
+    Position P;
+
+    L = ReadInput();
+    scanf("%d", &X);
+    P = BinarySearch( L, X );
+    printf("%d\n", P);
+
+    return 0;
 }
+Position BinarySearch( List L, ElementType X )
+{
+	ElementType l=1;
+	ElementType r=L->Last;
+	while(l<=r)
+	{
+		ElementType i=(l+r)/2;
+		if(L->Data[i]<X)
+		{
+		    l=i+1;
+		}
+		else if(L->Data[i]>X)
+		{	
+		r=i-1;
+	    } 
+		else 
+		{   
+		return i;
+	    }
+	}
+	return NotFound;
+}
+//判断条件为 l<=r 
