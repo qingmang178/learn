@@ -17,7 +17,7 @@ int main()
         inputArray.push_back(temp);
     }
     sort(inputArray.begin(),inputArray.end());   
-    inputArray.erase(unique(inputArray.begin(), inputArray.end()), inputArray.end());
+    inputArray.erase(unique(inputArray.begin(), inputArray.end()), inputArray.end());//去重
     for(int i=0;i<inputArray.size();i++)
         cout<<inputArray[i]<<endl;
    }
