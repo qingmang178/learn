@@ -32,8 +32,8 @@ int main()
 				a.pop();
 				p++;
 			}else if(a.top()<b[p]){
-				if(a.size()==N){
-					flag==1;
+				if(a.size()==M){
+					flag=1;
 					break;
 					
 				}else{
@@ -46,11 +46,12 @@ int main()
 			}
 				
 		}
-		if(flag)
+		
+	}
+	if(flag)
 		    cout<<"NO"<<endl;
 		else
 		    cout<<"YES"<<endl;
-	}
-	return 0;	
-   }	
+   }
+   return 0;	
 } 
